@@ -63,7 +63,6 @@ def hinge_loss_full(feature_matrix, labels, theta, theta_0):
     for i in range(num):
         hinge += hinge_loss_single(feature_matrix[i], labels[i], theta, theta_0)
         
-    
     return hinge/num
 
 
@@ -121,16 +120,13 @@ def perceptron(feature_matrix, labels, T):
     theta_0, the offset classification parameter, after T iterations through
     the feature matrix.
     """
-    print(feature_matrix, labels, T)
-    theta, theta_0 = [], []
-    theta_current, theta_0_current = [0, 0], 0
+    m,n = np.shape(feature_matrix)
+    theta_current, theta_0_current = np.zeros(n), 0
     for t in range(T):
-        for i in get_order(feature_matrix.shape[0]):
+        for i in get_order(m):
             theta_current, theta_0_current = perceptron_single_step_update(feature_matrix[i], labels[i], theta_current, theta_0_current)
-            theta.append(theta_current)
-            theta_0.append(theta_0_current)
-            
-    return np.array(*theta), theta_0
+                
+    return theta_current,theta_0_current
 
 
 def average_perceptron(feature_matrix, labels, T):

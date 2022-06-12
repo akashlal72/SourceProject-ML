@@ -114,7 +114,7 @@ def check_hinge_loss_single():
 , 0.5938875, 0.79426483, 0.77526803, 0.09927464])
     label, theta, theta_0 = -1, np.array([ 0.91924147, -0.50825611, 0.81665088, -0.93930707, 0.77763782, 0.49614762
 , -0.99282653, -0.62334347, -0.72489539, -0.56823349]), 0
-    exp_res = 0.1492675
+    exp_res = 0.14926751163971785
     if check_real(
             ex_name, p1.hinge_loss_single,
             exp_res, feature_vector, label, theta, theta_0):
@@ -444,17 +444,17 @@ def main():
     log(green("PASS"), "Import project1")
     try:
         check_get_order()
-        # check_hinge_loss_single()
-        # check_hinge_loss_full()
-        # check_perceptron_single_update()
+        check_hinge_loss_single()
+        check_hinge_loss_full()
+        check_perceptron_single_update()
         check_perceptron()
-        # check_average_perceptron()
-        # check_pegasos_single_update()
-        # check_pegasos()
-        # check_classify()
-        # check_classifier_accuracy()
-        # check_bag_of_words()
-        # check_extract_bow_feature_vectors()
+        check_average_perceptron()
+        check_pegasos_single_update()
+        check_pegasos()
+        check_classify()
+        check_classifier_accuracy()
+        check_bag_of_words()
+        check_extract_bow_feature_vectors()
     except Exception:
         log_exit(traceback.format_exc())
 
