@@ -238,7 +238,14 @@ def pegasos(feature_matrix, labels, T, L):
     parameter, found after T iterations through the feature matrix.
     """
     # Your code here
-    raise NotImplementedError
+    m, n = np.shape(feature_matrix)
+    theta, theta_0, count = np.zeros(n), 0, 1
+    for t in range(T):
+        for i in get_order(m):
+            eta = 1/np.sqrt(count)
+            theta, theta_0 = pegasos_single_step_update(feature_matrix[i], labels[i], L, eta, theta, theta_0)
+            count += 1
+    return theta, theta_0
 
 # Part II
 
