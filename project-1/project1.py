@@ -268,6 +268,9 @@ def classify(feature_matrix, theta, theta_0):
     be considered a positive classification.
     """
     # Your code here
+    pred = np.matmul(feature_matrix,theta)+theta_0
+    label =np.where(pred>0,1,-1)
+    return label
     raise NotImplementedError
 
 
